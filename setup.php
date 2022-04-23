@@ -24,8 +24,10 @@ error_reporting(E_ALL);
             }
 
             $jsonAns = json_encode($ans);
+            echo $jsonAns;
         }
         
+
 ?>
 
 
