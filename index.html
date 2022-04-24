@@ -17,9 +17,9 @@
             <form action="" method="get">
                 <label for="frame">Frame:</label>
                 </br>
-                <input type="number" id = "width" name="width" />
+                <input type="number" id = "width" name="width" placeholder="width"/>
                 <p>X</p>
-                <input type="number" id = "length" name="length"/>
+                <input type="number" id = "length" name="length" placeholder="height"/>
                 <button class="startBtn" type="submit" >Start</button>
             </form>
         </div>
@@ -51,32 +51,47 @@
                     //ajax
                     var length = $("#length").val();
                      var width = $("#width").val();
-                     console.log(length);
+                     
+                     
                     $.ajax({url: "setup.php", 
                         
                         success: function(result) {
-                            var jsonStart = result;
+                            var jsonStart = JSON.stringify(<?=$jsonAns?>);
                             console.log(jsonStart);
-                            for (var i = 0; i < length ; i++) {
+                            var length = $("#length").val();
+                            var width = $("#width").val();
+                            var jsonStart = result;
+                            // console.log(jsonStart);
+                            for (let i = 0; i < length ; i++) {
                                 //adding the y coordinate as id
                                 var newsq =$square.clone();
                                 $(newsq).attr("id",i);
                                 $row.append(newsq);
                                 
-                            };
-                            for (var y = 0; y < width; y++) {
+                                };
+                           
+                            
+                            for (let y = 0; y < width; y++) {
                                 //adding the x coordinate as id
+                                //if
+                                
                                 var newel =$row.clone();
+                                // $(".row").children("p.first").
+                         
                                 $(newel).attr("id",y);
-                                $("#wrapper").append(newel);
-                               
-                                
-                                
+                                $("#wrapper").append(newel);                               
                             };
-                    }
-                }); }
+                        }
                     
-            )});
+                    }); 
+                    return false;
+                });
+                
+            });
+                
+            
+                    
+       
      
         </script>
     </body>

@@ -22,7 +22,7 @@ error_reporting(E_ALL);
                     }
                 }
             }
-
+            // header('Content-Type: application/json');
             $jsonAns = json_encode($ans);
             echo $jsonAns;
         }
